@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: moodle
-        image: registry.gitlab.com/vanzoelmaulana/docker-lms:vanz-26
+        image: panjol/docker-lms:v1
         ports:
         - containerPort: 80
         env:
