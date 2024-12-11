@@ -33,7 +33,6 @@ RUN chown -R www-data:www-data /var/www/html/moodle/ && \
     chmod -R 755 /var/www/html/moodledata
 
 RUN chown -R www-data:www-data /var/lib/php/sessions
-RUN echo "ServerName moodle-test.connectowl.io" >> /etc/apache2/apache2.conf
 
 # Copy custom Apache configuration
 COPY moodle.conf /etc/apache2/sites-available/
