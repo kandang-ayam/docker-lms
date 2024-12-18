@@ -33,6 +33,7 @@ RUN chown -R www-data:www-data /var/www/html/moodle/ && \
     chmod -R 755 /var/www/html/moodledata
 
 RUN chown -R www-data:www-data /var/lib/php/sessions
+# RUN echo "ServerName moodle-test.connectowl.io" >> /etc/apache2/apache2.conf
 
 # Copy custom Apache configuration
 COPY moodle.conf /etc/apache2/sites-available/
@@ -44,10 +45,11 @@ RUN a2enmod rewrite && \
     a2dissite 000-default.conf
 
 # Restart Apache
-RUN service apache2 restart
+RUN apache2ctl configtest && service apache2 restart
 
 # Expose port 80
 EXPOSE 80
 
 # Start Apache in foreground
 CMD ["apachectl", "-D", "FOREGROUND"]
+
